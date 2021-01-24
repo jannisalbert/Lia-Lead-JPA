@@ -1,8 +1,4 @@
-import Dao.CompanyDao;
-import Dao.CompanyDaoImpl;
-import Dao.LeadDaoImpl;
 import Dao.OpportunityDaoImpl;
-import model.Lead;
 import model.Opportunity;
 
 import java.util.List;
@@ -19,7 +15,7 @@ public class Main {
 
 		OpportunityDaoImpl opportunityDao = new OpportunityDaoImpl();
 
-		List<Opportunity> opportunities = opportunityDao.finAll();
+		List<Opportunity> opportunities = opportunityDao.findAll();
 
 		System.out.println(opportunities);
 
