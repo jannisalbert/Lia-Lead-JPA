@@ -1,3 +1,5 @@
+package model;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,7 +17,7 @@ public class Lead {
 
 	@Override
 	public String toString() {
-		return "Lead{" +
+		return "model.Lead{" +
 				"id=" + id +
 				", company='" + company + '\'' +
 				", contactId=" + contactId +

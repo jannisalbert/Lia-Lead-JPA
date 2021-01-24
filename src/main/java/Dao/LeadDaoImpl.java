@@ -1,3 +1,5 @@
+package Dao;
+
 import model.Lead;
 
 import javax.persistence.EntityManager;
