@@ -15,19 +15,10 @@ public class Contact {
 	String email;
 	String phone;
 
-
-
-	public Company getCompany() {
-		return company;
-	}
-
-	public void setCompany(Company company) {
-		this.company = company;
-	}
-
 	@OneToOne
 	@JoinColumn(name = "CompanyId")
 	private Company company;
+
 
 	public Contact() {
 	}
@@ -41,6 +32,15 @@ public class Contact {
 		this.phone = phone;
 		this.company = company;
 	}
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
+
 
 	@Override
 	public String toString() {
