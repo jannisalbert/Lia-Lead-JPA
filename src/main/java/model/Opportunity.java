@@ -9,20 +9,18 @@ public class Opportunity {
 
 	@Id
 	private int id;
-//	@Column(name = "CompanyId")
 	private int companyId;
-//	@Column(name = "ContactId")
 	private int contactId;
 	private String comment;
 	@Column(name = "DateCreated")
 	private LocalDate regDate;
 
 	@OneToOne
-	@JoinColumn(name = "ContactId") // Join via contactId
+	@JoinColumn(name = "ContactId", insertable = false, updatable = false) // Join via contactId
 	private Contact contact;
 
 	@OneToOne
-	@JoinColumn(name = "CompanyId") // Join via companyId
+	@JoinColumn(name = "CompanyId", insertable = false, updatable = false) // Join via companyId
 	private Company company;
 
 	@Override
@@ -36,9 +34,9 @@ public class Opportunity {
 				"}\n";
 	}
 
-	public Opportunity(Company company, Contact contact, String comment) {
-		this.company = company;
-		this.contact = contact;
+	public Opportunity(int companyId, int contactId, String comment) {
+		this.companyId = companyId;
+		this.contactId = contactId;
 		this.comment = comment;
 		this.regDate = LocalDate.now();
 	}
