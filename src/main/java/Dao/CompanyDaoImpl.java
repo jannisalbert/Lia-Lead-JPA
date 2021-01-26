@@ -12,7 +12,6 @@ public class CompanyDaoImpl implements CompanyDao {
 	EntityManagerFactory emf = Persistence
 			.createEntityManagerFactory("LeadPersistance");
 
-
 	@Override
 	public List<Company> findCompany(String companyName) {
 
