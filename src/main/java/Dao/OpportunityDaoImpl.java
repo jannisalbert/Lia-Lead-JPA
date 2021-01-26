@@ -9,12 +9,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class OpportunityDaoImpl implements OpportunityDao {
+public class OpportunityDaoImpl {
 
 	EntityManagerFactory emf = Persistence
 			.createEntityManagerFactory("LeadPersistance");
 
-	@Override
 	public List<Opportunity> findAll() {
 
 		List<Opportunity> list;
@@ -26,6 +25,15 @@ public class OpportunityDaoImpl implements OpportunityDao {
 				.getResultStream() // Get results as stream
 				.sorted(Comparator.comparing(Opportunity :: getRegDate)) // Sort by date created
 				.collect(Collectors.toList()); // Return as list
+	}
+
+	public void createOpportunity(Opportunity opportunity) {
+
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(opportunity);
+		em.getTransaction().commit();
+		System.out.println(opportunity + " persisted.");
 	}
 
 }

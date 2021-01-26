@@ -2,7 +2,6 @@ package model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "Opportunities")
@@ -10,35 +9,19 @@ public class Opportunity {
 
 	@Id
 	private int id;
-	@Column(name = "CompanyId")
 	private int companyId;
-	@Column(name = "ContactId")
 	private int contactId;
-	@Column(name = "Comment")
 	private String comment;
 	@Column(name = "DateCreated")
-	private LocalDate regDate = LocalDate.now();
+	private LocalDate regDate;
 
 	@OneToOne
-	@JoinColumn(name = "CompanyId", insertable = false, updatable = false) // Join via CompanyId
-	private Company company;
-
-	@OneToOne
-	@JoinColumn(name = "ContactID", insertable = false, updatable = false) // Join via ContactID
+	@JoinColumn(name = "ContactId", insertable = false, updatable = false) // Join via contactId
 	private Contact contact;
 
-
-
-	public Opportunity(int id, int companyId, int contactId, String comment, List<Opportunity> opportunities) {
-		this.id = id;
-		this.companyId = companyId;
-		this.contactId = contactId;
-		this.comment = comment;
-	}
-
-
-	public Opportunity() {
-	}
+	@OneToOne
+	@JoinColumn(name = "CompanyId", insertable = false, updatable = false) // Join via companyId
+	private Company company;
 
 	@Override
 	public String toString() {
@@ -48,7 +31,17 @@ public class Opportunity {
 				", contact=" + contact +
 				", comment='" + comment + '\'' +
 				", regDate=" + regDate +
-				'}';
+				"}\n";
+	}
+
+	public Opportunity(int companyId, int contactId, String comment) {
+		this.companyId = companyId;
+		this.contactId = contactId;
+		this.comment = comment;
+		this.regDate = LocalDate.now();
+	}
+
+	public Opportunity() {
 	}
 
 	public int getId() {
@@ -57,6 +50,10 @@ public class Opportunity {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getCompanyId() {
+		return companyId;
 	}
 
 	public void setCompanyId(int companyId) {
@@ -87,7 +84,19 @@ public class Opportunity {
 		this.regDate = regDate;
 	}
 
+	public Contact getContact() {
+		return contact;
+	}
+
+	public void setContact(Contact contact) {
+		this.contact = contact;
+	}
+
 	public Company getCompany() {
 		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 }
