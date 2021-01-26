@@ -33,7 +33,7 @@ public class OpportunityDaoImpl {
 				.collect(Collectors.toList()); // Return as list
 	}
 
-	public void create(int companyId, int contactId, String comment) {
+	public void create(int companyId, int contactId, String comment) { // Not working, redo from start
 		Opportunity opportunity = new Opportunity();
 
 		EntityManager em = emf.createEntityManager();
