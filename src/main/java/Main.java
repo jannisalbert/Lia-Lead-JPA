@@ -8,7 +8,7 @@ public class Main {
 
 		ContactDao contactDao = new ContactDaoImpl();
 
-		Contact newContact = new Contact(1,"Jannis","Mueller","test@test.se","0723068922");
+		Contact newContact = new Contact(1,"Albert","Andersson","test@test.se","0723068922");
 
 		contactDao.createContact(newContact);
 
