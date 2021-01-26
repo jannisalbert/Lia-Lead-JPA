@@ -9,12 +9,12 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class OpportunityDaoImpl {
+public class OpportunityDaoImpl implements OpportunityDao {
 
 	EntityManagerFactory emf = Persistence
 			.createEntityManagerFactory("LeadPersistance");
 
-
+	@Override
 	public List<Opportunity> findAll() {
 
 		List<Opportunity> list;

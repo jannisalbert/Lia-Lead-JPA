@@ -8,43 +8,37 @@ public class Contact {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
-	int companyId;
-	String firstName;
-	String lastName;
-	String email;
-	String phone;
+	private int id;
 
-	@OneToOne
-	@JoinColumn(name = "CompanyId")
-	private Company company;
+	@Column(name = "CompanyID")
+	private int companyId;
+	@Column(name = "FirstName")
+	private String firstName;
+	@Column(name = "LastName")
+	private String lastName;
+	@Column(name = "Email")
+	private String email;
+	@Column(name = "Phone")
+	private String phone;
 
 
-	public Contact() {
-	}
-
-	public Contact(int id, int companyId, String firstName, String lastName, String email, String phone, Company company) {
-		this.id = id;
+	public Contact(int companyId, String firstName, String lastName, String email, String phone) {
 		this.companyId = companyId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.phone = phone;
-		this.company = company;
-	}
-	public Company getCompany() {
-		return company;
+
 	}
 
-	public void setCompany(Company company) {
-		this.company = company;
+	public Contact() {
 	}
-
 
 	@Override
 	public String toString() {
 		return "Contact{" +
 				"id=" + id +
+				", companyId=" + companyId +
 				", firstName='" + firstName + '\'' +
 				", lastName='" + lastName + '\'' +
 				", email='" + email + '\'' +

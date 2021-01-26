@@ -1,16 +1,17 @@
-import Dao.OpportunityDaoImpl;
-import model.Opportunity;
-
-import java.time.LocalDate;
-import java.util.List;
+import Dao.ContactDao;
+import Dao.ContactDaoImpl;
+import model.Contact;
 
 public class Main {
+
 	public static void main(String[] args) {
 
-		OpportunityDaoImpl opportunityDao = new OpportunityDaoImpl();
+		ContactDao contactDao = new ContactDaoImpl();
 
-		List<Opportunity> opportunities = opportunityDao.findAll();
-		System.out.println(opportunities);
+		Contact newContact = new Contact(1,"Jannis","Mueller","test@test.se","0723068922");
+
+		contactDao.createContact(newContact);
+
 
 	}
 }

@@ -1,6 +1,9 @@
 package model;
+import model.Contact;
+import org.hibernate.engine.internal.Cascade;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -9,39 +12,36 @@ public class Company {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
+	private int id;
 
-	String name;
-	String website;
-	String city;
+	private String name;
+	private String website;
+	private String city;
 
-	@OneToMany
-	@JoinColumn(name = "CompanyId")
-	private List<Contact> companyContact;
+	@OneToMany(cascade = CascadeType.REMOVE)
+	@JoinColumn
+	private List <Contact> contactList;
+
 
 	public Company() {
 	}
 
-	public List<Contact> getCompanyContact() {
-		return companyContact;
-	}
-
-	public void setCompanyContact(List<Contact> companyContact) {
-		this.companyContact = companyContact;
-	}
-
-	public Company(String name, String website, String city) {
+	public Company(int id, String name, String website, String city) {
+		this.id = id;
 		this.name = name;
 		this.website = website;
 		this.city = city;
+
 	}
 
 	@Override
 	public String toString() {
 		return "Company{" +
+				"id=" + id +
 				", name='" + name + '\'' +
 				", website='" + website + '\'' +
 				", city='" + city + '\'' +
+				", contacts=" + contactList +
 				'}';
 	}
 
